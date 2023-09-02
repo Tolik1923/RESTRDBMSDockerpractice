@@ -1,0 +1,34 @@
+- GET /orders - list all orders
+curl http://localhost:8000/orders 
+
+- GET /orders/<id> - get a single order
+curl http://localhost:8000/orders/7
+
+- POST /orders - create a new order
+curl -X POST -H "Content-Type: application/json" -d "{\"title\": \"New Order\", \"total\": 100.00, \"items\": [{\"name\": \"Item 1\", \"price\": 10.00, \"quantity\": 2}, {\"name\": \"Item 2\", \"price\": 20.00, \"quantity\": 3}]}" http://localhost:8000/orders/
+
+- PUT /orders/<id> - update existing order
+curl -X PUT -H "Content-Type: application/json" -d "{\"title\": \"Updated Order\", \"total\": 150.00}" http://localhost:8000/orders/7
+
+- DELETE /orders/<id> - delete existing order
+curl -X DELETE http://localhost:8000/orders/6
+
+- GET /stats - return general stats
+curl http://localhost:8000/stats
+
+- GET /orders/<id>/items - list items of a single order
+curl http://localhost:8000/orders/7/items 
+
+- GET /orders/<id>/items/<id> - get a single order item
+curl http://localhost:8000/orders/7/items/13
+
+- POST /orders/<id>/items - add an item to an order
+curl -X POST -H "Content-Type: application/json" -d "{\"name\": \"New Item\", \"price\": 10.00, \"quantity\": 2}" http://localhost:8000/orders/7/items
+
+- PUT /orders/<id>/items/<id> - update existing order item
+curl -X PUT -H "Content-Type: application/json" -d "{\"name\": \"Updated\", \"price\": 150.00, \"quantity\": 10}" http://localhost:8000/orders/7/items/13
+
+- DELETE /orders/<id>/items/<id> - delete existing order item
+curl -X DELETE http://localhost:8000/orders/7/items/13
+
+
