@@ -1,7 +1,15 @@
 from fastapi import FastAPI, HTTPException
 import services
+import asyncio
+from create import create_database
+
 
 app = FastAPI()
+
+@app.on_event("startup")
+async def start():
+    await asyncio.sleep(10)
+    await create_database()
 
 @app.get("/")
 def read_root():
